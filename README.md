@@ -2,14 +2,15 @@
 
 ## Overview
 
-AIAGENTMCP is an automated test suite built with [Playwright](https://playwright.dev/) for end-to-end testing of web applications. It includes example and real-world test cases to demonstrate robust browser automation and validation.
+AIAGENTMCP is an automated test suite built with [Playwright](https://playwright.dev/) and [MCP](https://www.npmjs.com/package/@playwright/mcp) (Modern Connected Playwright) for end-to-end testing of web applications. It includes example and real-world test cases to demonstrate robust, super-fast browser automation and validation.
 
 ## Features
-- Automated browser testing using Playwright
+- Automated browser testing using Playwright and MCP
 - Example tests for Playwright documentation site
 - Real-world login and cart scenario tests
 - Extensible configuration for different browsers
 - HTML test reporting
+- Super-fast execution with MCP server mode
 
 ## Project Structure
 ```
@@ -29,39 +30,72 @@ AIAGENTMCP/
 ### Prerequisites
 - [Node.js](https://nodejs.org/) v18 or higher
 - npm (comes with Node.js)
+- [MCP Playwright server](https://www.npmjs.com/package/@playwright/mcp) (installed via npx)
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/abhi9avx/AIAGENTMCP.git
    cd AIAGENTMCP
    ```
 2. Install dependencies:
    ```bash
    npm install
    ```
+3. (Optional, but recommended) Ensure you have the latest MCP server:
+   ```bash
+   npx @playwright/mcp@latest
+   ```
 
-### Running Tests
-- To run all tests:
-  ```bash
-  npx playwright test
-  ```
-- To run a specific test file:
-  ```bash
-  npx playwright test tests/example.spec.ts
-  ```
-- To view the HTML report after running tests:
-  ```bash
-  npx playwright show-report
-  ```
+## Running the Suite
 
-### Configuration
+### 1. Start the MCP Playwright Server
+This enables super-fast, connected, and scalable Playwright automation:
+```bash
+npx @playwright/mcp@latest
+```
+
+### 2. Run All Tests
+In a separate terminal, execute:
+```bash
+npx playwright test
+```
+
+### 3. Run a Specific Test File
+```bash
+npx playwright test tests/example.spec.ts
+```
+
+### 4. View the HTML Test Report
+```bash
+npx playwright show-report
+```
+
+## Configuration
 - Test settings can be adjusted in `playwright.config.ts`.
 - By default, tests run in parallel on Chromium. You can add more browsers or change settings as needed.
 
 ## Writing Your Own Tests
 - Add new `.spec.ts` files in the `tests/` directory.
 - Use Playwright's [test API](https://playwright.dev/docs/test-api) for writing and structuring tests.
+
+## Why MCP?
+MCP (Modern Connected Playwright) is used in this framework to:
+- Provide a unified, super-fast Playwright server for all your automation needs.
+- Enable easy connection and orchestration of tests, both locally and remotely.
+- Simplify learning and setup—just one command to get started.
+- Allow for rapid, scalable, and modern automation workflows.
+
+## Typical Workflow
+1. **Start the MCP Playwright server**:
+   ```bash
+   npx @playwright/mcp@latest
+   ```
+2. **Run your tests** (they will connect to the server if configured):
+   ```bash
+   npx playwright test
+   ```
+3. **View reports and debug** with Playwright's built-in tools.
 
 ## Contributing
 1. Fork the repository
@@ -74,7 +108,8 @@ AIAGENTMCP/
 This project is licensed under the ISC License.
 
 ## Acknowledgements
-- [Playwright](https://playwright.dev/) for the powerful browser automation framework 
+- [Playwright](https://playwright.dev/) for the powerful browser automation framework
+- [MCP](https://www.npmjs.com/package/@playwright/mcp) for enabling super-fast, connected Playwright automation
 
 ## Why MCP + Playwright? Super Fast, Easy Automation
 
